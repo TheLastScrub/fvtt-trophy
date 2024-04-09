@@ -16,8 +16,8 @@
     "minimum": "11",
     "verified": "11"
   },
-  "manifest": "",
-  "download": "",
+  "manifest": "https://raw.githubusercontent.com/TheLastScrub/fvtt-trophy/main/system.json",
+  "download": "https://github.com/TheLastScrub/fvtt-trophy/releases/latest/download/trophy.zip",
   "gridDistance": 1,
   "gridUnits": "m",
   "primaryTokenAttribute": "ruin",
