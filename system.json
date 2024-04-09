@@ -2,7 +2,7 @@
   "id": "trophy",
   "title": "Trophy Dark (Unofficial)",
   "description": "Fan-made Foundry VTT system for Trophy Dark. The system is an independent production that is unaffiliated with the authors, and publishers.",
-  "url": "",
+  "url": "https://raw.githubusercontent.com/TheLastScrub/fvtt-trophy/main/system.json",
   "license": "LICENSE.txt",
   "background": "systems/trophy/assets/Designed-for-Trophy-Dark-White.webp",
   "authors": [
@@ -11,7 +11,7 @@
       "discord": "TheLastScrub#7146"
     }    
   ],
-  "version": "0.0.1",
+  "version": "0.1.0",
   "compatibility": {
     "minimum": "11",
     "verified": "11"
