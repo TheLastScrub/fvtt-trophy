@@ -20,8 +20,8 @@
   "download": "",
   "gridDistance": 1,
   "gridUnits": "m",
-  "primaryTokenAttribute": "stamina",
-  "secondaryTokenAttribute": "luck",
+  "primaryTokenAttribute": "ruin",
+  "secondaryTokenAttribute": "",
   "esmodules": [
     "module/trophy.js"
   ],
