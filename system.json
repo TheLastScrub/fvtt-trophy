@@ -1,0 +1,35 @@
+{
+  "id": "trophy",
+  "title": "Trophy Dark (Unofficial)",
+  "description": "Fan-made Foundry VTT system for Trophy Dark. The system is an independent production that is unaffiliated with the authors, and publishers.",
+  "url": "",
+  "license": "LICENSE.txt",
+  "background": "systems/trophy/assets/Designed-for-Trophy-Dark-White.webp",
+  "authors": [
+    {
+      "name": "N. Eimers",
+      "discord": "TheLastScrub#7146"
+    }    
+  ],
+  "version": "0.0.1",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11"
+  },
+  "manifest": "",
+  "download": "",
+  "gridDistance": 1,
+  "gridUnits": "m",
+  "primaryTokenAttribute": "stamina",
+  "secondaryTokenAttribute": "luck",
+  "esmodules": [
+    "module/trophy.js"
+  ],
+  "styles": [
+    "css/trophy.css"
+  ],
+  "languages": [
+  ],
+  "packs": [
+  ]
+}

@@ -1,0 +1,266 @@
+@font-face {
+    font-family: 'SourceSans3';
+    src: url('../css/fonts/Source_Sans_3/SourceSans3-Regular.ttf') format('truetype'); 
+}
+
+@font-face {
+    font-family: 'SourceSans3';
+    src: url('../css/fonts/Source_Sans_3/SourceSans3-Light.ttf') format('truetype');
+    font-weight: lighter;
+}
+
+@font-face {
+    font-family: 'SourceSans3';
+    font-weight: bold;
+    src: url('../css/fonts/Source_Sans_3/SourceSans3-SemiBold.ttf') format('truetype'); 
+}
+
+@font-face {
+    font-family: 'SourceSans3';
+    font-style: italic;
+    src: url('../css/fonts/Source_Sans_3/SourceSans3-Italic.ttf') format('truetype'); 
+}
+
+/* override default pause icon to something fun */
+#pause img {
+    content: url(../assets/Designed-for-Trophy-Dark-White.webp);
+}
+
+/* Set font but have to exclude 'fas' class or we break all FAS icons! */
+.trophy *:not(.fas):not(.fa-solid) {
+    font-family: "SourceSans3", "Helvetica", sans-serif;
+    
+}
+
+.journal-sheet.journal-entry{
+    font-family: "SourceSans3", "Helvetica", sans-serif;
+}
+
+.ruin-dark-die rect{
+    fill:rgb(0, 0, 0);
+    stroke-width:1;
+    stroke:rgb(0, 0, 0);
+}
+
+.ruin-dark-die text{
+    font-family:"SourceSans3", "Helvetica", sans-serif; 
+    font-size:"60";
+    fill: rgb(255, 255, 255);;
+}
+
+.ruin-light-die text{
+    font-family:"SourceSans3", "Helvetica", sans-serif; 
+    font-size:"30"; 
+    fill:rgb(0, 0, 0);
+}
+
+.ruin-light-die rect{
+    fill:rgb(255, 255, 255);
+    stroke-width:1;
+    stroke:rgb(0, 0, 0);
+}
+
+.bottom-align{
+    vertical-align: bottom !important;
+    align-self: flex-end !important;
+    justify-content: flex-end !important;
+}
+
+.bold-font{
+    font-weight: bold !important;
+}
+
+.trophy input{
+    font-size: medium;
+    font-weight: bold;
+    border-radius:0px;
+    border:#000;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.trophy textarea {
+    resize: none;
+    border-radius:0px;
+    font-weight: bold;
+}
+
+.trophy ol{
+    padding: 0px !important;
+}
+
+.light-font{
+    font-weight: lighter !important;
+    font-family: "SourceSans3" !important;
+}
+
+.header-text-label{
+    border: transparent !important;
+    font-weight: bold !important;
+    margin-bottom: 0px !important;
+    margin-top: 1px !important;
+}
+
+.header-minor-text-label{
+    border: transparent !important;
+    font-weight: bold !important;
+    margin-bottom: 0px !important;
+    margin-top: 1px !important;
+}
+
+.trophy-logo-img{
+    border-color: transparent !important;
+    max-height: 100px;
+    max-width: 350px;
+    display:inline-flex;
+    margin: 1px;
+}
+
+.trophy header{
+    height:auto;
+    margin-bottom: 0px;
+}
+
+.flex-item-horizontal-stretch{
+    flex: 1 !important;
+}
+
+.logo-flex-grid{
+    display: flex;
+    justify-content: center;
+}
+
+.trophy.app.window-app.sheet.actor{
+    min-width: 400px;
+}
+
+.occupation-and-background-flex-grid{
+    display: flex;
+    justify-content:space-between;
+    column-gap: 2px;
+}
+
+.ruin-dice-flex-grid{
+    display: flex;
+    justify-content:space-between;
+    column-gap: 10px;
+    max-height: 55px;
+}
+
+.occupation-and-skills-grid{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    row-gap: 2px;
+    column-gap: 1px;
+    margin-right: 1px;
+    margin-left: 1px;
+    align-items: end;
+}
+
+.rituals-grid{
+    display: grid;
+    grid-template-columns: 25% 65% 10%;
+    row-gap: 2px;
+    column-gap: 1px;
+    margin-right: 1px;
+    margin-left: 1px;
+    border-top: transparent;
+    border-right: transparent;
+    border-left: transparent;
+    border-bottom: #000;
+    border-style: dotted;
+}
+
+.name-pronouns-flex-grid{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    margin-right: 1px;
+    margin-left: 1px;
+}
+
+.ruin-die-sheet-icon:hover, .ruin-die-sheet-icon:focus{
+    color: #000;
+    text-shadow: 0 0 10px red;
+    cursor: pointer;
+}
+
+.profile-img{
+    max-height:150px;
+    max-width: 100%;
+    border: transparent !important;
+    padding: 3%;
+    display: block;
+    margin: auto;
+}
+
+.sheet-body,
+.sheet-body .tab .editor {
+  height: auto;
+  flex: auto;
+}
+
+.sheet-body{
+    margin-top: 5px;
+}
+
+.trophy nav.sheet-tabs{
+    border-color: #782e22;   
+}
+
+.trophy .tabs .item {
+    vertical-align: middle !important;
+    line-height: inherit;
+    padding: 5px 5px 5px 5px !important;
+    border-radius: 5px 5px 0px 0px;
+    border-color: #000;
+    margin-top: 5px;
+    font-weight: bold;
+    min-width: 100px;
+
+    border: #999999;
+    border-width: 2px 2px 0px 2px;
+    border-style: solid; 
+}
+
+.trophy .tabs .item.active {
+    text-shadow: none;
+    font-style: italic;
+    border: #000000;
+    border-width: 2px 2px 0px 2px;
+    border-style: solid;
+    background-color: rgba(0, 0 , 0, 0.05);;
+}
+
+.editor{
+    height: 400px !important;
+}
+
+.italicized{
+    font-style: italic !important;
+}
+
+.bolded{
+    font-weight: bold !important;
+}
+
+.no-underline{
+    border: #000 0px !important;
+}
+
+.top-margin-3px{
+    margin-top: 3px;
+}
+
+.drive-section textarea{
+    font-size: medium;
+    color: #000;
+    font-weight: bold;
+}
+
+.conditions-section textarea{
+    font-size: medium;
+    color: #000;
+    min-height: 100px;
+    font-weight: bold;
+}

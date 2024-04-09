@@ -1,0 +1,38 @@
+{
+    "Actor": {
+        "types": [
+            "trophy-dark"
+        ],
+        "templates": {
+            "base": {
+                "ruin": 1
+            }
+        },
+        "trophy-dark":{
+            "templates":[
+                "base"
+            ],
+            "occupation": "",
+            "background": "",
+            "drive": "",      
+            "conditions": "",
+            "skill1": "",
+            "skill2": "",
+            "skill3": "",
+            "skill4": ""
+        }
+    },
+    "Item": {
+        "types": [
+            "ritual"
+        ],
+        "templates": {
+            "base": {
+                "description":""
+            }
+        },
+        "ritual": {
+            "effect": "Ritual effect"
+        }
+    }
+}
