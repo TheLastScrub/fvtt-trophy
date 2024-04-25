@@ -1,0 +1,143 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+  <header class="">
+
+    <div class="logo-flex-grid">
+      <img class="trophy-logo-img" src="systems/trophy/assets/Designed-for-Trophy-Gold-Black.webp" alt="trophy dark logo">
+    </div>
+
+    <div class="">
+      <div class="name-pronouns-flex-grid">
+        <h3 class="header-text-label">NAME</h3>
+        <h4 class="header-minor-text-label">PRONOUNS</h4>
+      </div>
+      <div>
+          <input name="name" class="" type="text" value="{{actor.name}}" title="" />
+      </div>
+    </div>
+
+    <div class="occupation-and-skills-grid top-margin-3px">
+
+      <h3 class="header-text-label">OCCUPATION</h3>
+      <h4 class="header-minor-text-label">SKILLS</h4>
+
+      <input name="system.occupation" class="" type="text" value="{{actor.system.occupation}}" title="" />
+      <input name="system.skill1" class="" type="text" value="{{actor.system.skill1}}" title="" />
+
+      <span></span>
+      <input name="system.skill2" class="" type="text" value="{{actor.system.skill2}}" title="" />
+
+      <span></span>
+      <input name="system.skill3" class="" type="text" value="{{actor.system.skill3}}" title="" />
+
+      <h3 class="header-text-label">BACKGROUND</h3>
+      <h4 class="header-minor-text-label">SKILL</h4>
+
+      <input name="system.background" class="" type="text" value="{{actor.system.background}}" title="" />
+      <input name="system.skill4" class="" type="text" value="{{actor.system.skill4}}" title="" />
+    </div>
+
+    <div class="drive-section top-margin-3px">
+      <h3 class="header-text-label">DRIVE</h3>
+      <textarea name="system.drive" value="{{actor.system.drive}}">{{actor.system.drive}}</textarea>
+    </div>
+
+    <div class="">
+      <h3 class="header-text-label">
+        <span>RITUALS</span> 
+        {{#unless actor.system.hasMaxNumberOfRituals}}
+          <a><i class="fa-solid fa-plus item-create" data-type="ritual"></i></a>
+        {{/unless}}
+      </h3>
+      <ol class=" items">
+        {{#each actor.items as |item id|}}
+          {{#if_eq item.type 'ritual'}}
+
+          <li data-item-id="{{item.id}}" class="item rituals-grid">
+            
+            <h4 class="header-minor-text-label">NAME</h4>
+            <span name="item.name" class="bold-font italicized" type="text" title="">{{item.name}}</span>
+            <div></div>           
+          
+            <h4 class="header-minor-text-label">EFFECT</h4>
+            <span name="item.system.effect" class="bold-font" type="text" title="">{{item.system.effect}}</span>
+            <div>
+              <a class="item-control item-delete" title="Create Ritual" data-type="ruin"><i class="fas fa-trash"></i></a>
+              <a class="item-control item-edit" title="Create item" data-type="ruin"><i class="fas fa-pen-to-square"></i></a>
+            </div> 
+            
+          </li>
+            
+          {{/if_eq}}
+        {{/each}}
+        </ol>
+    </div>
+
+    <div class="top-margin-3px">
+
+      <div class="">
+
+        <h3 class="header-text-label">RUIN</h3>
+        <!-- <h3 class="header-text-label">RUIN <i class="fa-solid fa-dice"></i></h3> -->
+
+      </div>
+      
+      <div class="ruin-dice-flex-grid">
+        
+        <svg class="{{GetRuinDiceCssClass 1}} ruin-die-sheet-icon" data-ruin="1" width="320" height="130" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <rect width="50" height="50" x="3" y="3" />
+            <text x="21" y="37" font-family="SourceSans3" font-size="30" >1</text>
+          </g>            
+        </svg>
+
+        <svg class="{{GetRuinDiceCssClass 2}} ruin-die-sheet-icon" width="320" data-ruin="2" height="130" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <rect width="50" height="50" x="3" y="3" />
+            <text x="21" y="37" font-family="SourceSans3" font-size="30">2</text>
+          </g>            
+        </svg>
+
+        <svg class="{{GetRuinDiceCssClass 3}} ruin-die-sheet-icon" width="320" height="130" data-ruin="3" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <rect width="50" height="50" x="3" y="3" />
+            <text x="21" y="37" font-family="SourceSans3" font-size="30">3</text>
+          </g>            
+        </svg>
+
+        <svg class="{{GetRuinDiceCssClass 4}} ruin-die-sheet-icon" width="320" height="130" data-ruin="4" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <rect width="50" height="50" x="3" y="3"  />
+            <text x="21" y="37" font-family="SourceSans3" font-size="30">4</text>
+          </g>            
+        </svg>
+
+        <svg class="{{GetRuinDiceCssClass 5}} ruin-die-sheet-icon" width="320" height="130" data-ruin="5" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <rect width="50" height="50" x="3" y="3"  />
+            <text x="21" y="37" font-family="SourceSans3" font-size="30">5</text>
+          </g>            
+        </svg>
+
+        <svg class="{{GetRuinDiceCssClass 6}} ruin-die-sheet-icon" width="320" height="130" data-ruin="6" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <rect width="50" height="50" x="3" y="3"  />
+            <text x="21" y="37" font-family="SourceSans3" font-size="30">6</text>
+          </g>            
+        </svg>
+
+      </div>
+
+    </div>
+
+    <div class="conditions-section">
+      <h3 class="header-text-label">CONDITIONS</h3>
+      <textarea name="system.conditions" value="{{actor.system.conditions}}">{{actor.system.conditions}}</textarea>
+    </div>
+
+    <div>
+      <span class="italicized"><a href="https://www.trophyrpg.com">Trophy™</a> is a trademark of <a href="https://www.hedgemazepress.com/">Hedgemaze Press</a>. The trademark and “Designed for Trophy” Logo are © Hedgemaze Press, and are used with permission.</span>
+    </div>
+  </header>
+  
+</form>

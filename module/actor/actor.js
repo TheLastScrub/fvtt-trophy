@@ -9,7 +9,13 @@ export class TrophyActor extends Actor {
 
     /** @override */
     get template() {
-        return "systems/trophy/templates/actor/trophy-dark-sheet.html";
+        if(data.type === "trophy-gold"){
+            return "systems/trophy/templates/actor/trophy-gold-sheet.html";
+        }
+        else{
+            return "systems/trophy/templates/actor/trophy-dark-sheet.html";
+        }
+        
     }
 
     /** @override */
@@ -17,7 +23,7 @@ export class TrophyActor extends Actor {
 
         data.prototypeToken = data.prototypeToken || {};
         
-        if ( data.type === "trophy-dark" ) {
+        if ( data.type === "trophy-dark" || data.type === "trophy-gold") {
             mergeObject(data.prototypeToken, {
                 actorLink: true  // this will make the 'Link Actor Data' option for a token is checked by default. So changes to the token sheet will reflect to the actor sheet.
             }, {overwrite: false});            

@@ -1,5 +1,6 @@
 import { TrophyActor } from "./actor/actor.js";
 import { TrophyDarkActorSheet } from "./actor/actor-sheet.js";
+import { TrophyGoldActorSheet } from "./actor/actor-sheet.js";
 import { TrophyItem } from "./item/item.js";
 import { TrophyItemSheet } from "./item/item-sheet.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
@@ -19,6 +20,7 @@ Hooks.once('init', async function() {
     Items.unregisterSheet("core", ItemSheet);
 
     Actors.registerSheet("trophy", TrophyDarkActorSheet, { makeDefault: true });
+    Actors.registerSheet("trophy", TrophyGoldActorSheet, { makeDefault: false });
     Items.registerSheet("trophy", TrophyItemSheet, { makeDefault: true });
 
     preloadHandlebarsTemplates();
@@ -96,7 +98,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     });
   
     dice3d.addColorset({
-        name: 'dark-die',
+        name: 'dark',
         description: "Dark Die",
         category: "Trophy Dark",
         foreground: '#B7950B',
@@ -112,7 +114,7 @@ Hooks.once('diceSoNiceReady', (dice3d) => {
     },"default");
     
     dice3d.addColorset({
-        name: 'light-die',
+        name: 'light',
         description: "Light Die",
         category: "Trophy Dark",
         foreground: '#5F4211',

@@ -1,7 +1,8 @@
 {
     "Actor": {
         "types": [
-            "trophy-dark"
+            "trophy-dark",
+            "trophy-gold"
         ],
         "templates": {
             "base": {
@@ -20,6 +21,14 @@
             "skill2": "",
             "skill3": "",
             "skill4": ""
+        },
+        "trophy-gold":{
+            "templates":[
+                "base"
+            ],
+            "occupation": "",
+            "background": "",
+            "drive": ""
         }
     },
     "Item": {
