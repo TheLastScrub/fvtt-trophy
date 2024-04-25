@@ -11,13 +11,13 @@
       "discord": "TheLastScrub#7146"
     }    
   ],
-  "version": "0.2.0",
+  "version": "0.2.1",
   "compatibility": {
     "minimum": "11",
     "verified": "11"
   },
   "manifest": "https://raw.githubusercontent.com/TheLastScrub/fvtt-trophy/main/system.json",
-  "download": "https://github.com/TheLastScrub/fvtt-trophy/releases/latest/download/trophy.zip",
+  "download": "https://github.com/TheLastScrub/fvtt-trophy/archive/refs/tags/v0.2.1.zip",
   "gridDistance": 1,
   "gridUnits": "m",
   "primaryTokenAttribute": "ruin",
