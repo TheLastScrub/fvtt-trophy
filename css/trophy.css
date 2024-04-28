@@ -28,8 +28,11 @@
 
 /* Set font but have to exclude 'fas' class or we break all FAS icons! */
 .trophy *:not(.fas):not(.fa-solid) {
-    font-family: "SourceSans3", "Helvetica", sans-serif;
-    
+    font-family: "SourceSans3", "Helvetica", sans-serif;    
+}
+
+.source-sans{
+    font-family: "SourceSans3", "Helvetica", sans-serif !important;
 }
 
 .journal-sheet.journal-entry{
@@ -110,7 +113,7 @@
 
 .trophy-logo-img{
     border-color: transparent !important;
-    max-height: 50px;
+    max-height: 40px;
     max-width: 350px;
     display:inline-flex;
     margin: 1px;
@@ -143,7 +146,7 @@
 .ruin-dice-flex-grid{
     display: flex;
     justify-content:space-between;
-    column-gap: 10px;
+    
     max-height: 55px;
 }
 
@@ -179,6 +182,7 @@
     margin-left: 1px;
 }
 
+.rollable:hover,
 .ruin-die-sheet-icon:hover, .ruin-die-sheet-icon:focus{
     color: #000;
     text-shadow: 0 0 10px red;

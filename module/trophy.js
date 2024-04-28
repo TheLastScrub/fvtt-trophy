@@ -4,6 +4,7 @@ import { TrophyGoldActorSheet } from "./actor/actor-sheet.js";
 import { TrophyItem } from "./item/item.js";
 import { TrophyItemSheet } from "./item/item-sheet.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
+import * as TrophyRolls from "./roll/roll.js"
 
 Hooks.once('init', async function() {
 
@@ -24,6 +25,9 @@ Hooks.once('init', async function() {
     Items.registerSheet("trophy", TrophyItemSheet, { makeDefault: true });
 
     preloadHandlebarsTemplates();
+
+    // Register custom dice rolls
+    Object.values(TrophyRolls).forEach((cls) => CONFIG.Dice.rolls.push(cls));
 
     // Add Handlebars helpers
     Handlebars.registerHelper('concat', function() {

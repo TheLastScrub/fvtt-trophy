@@ -1,4 +1,5 @@
 import { TrophyRollDialog } from "../roll/roll.js";
+import { TrophyRuinRoll } from "../roll/roll.js";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -11,7 +12,7 @@ export class TrophyDarkActorSheet extends ActorSheet {
         classes: ["trophy", "sheet", "actor"],
         template: "systems/trophy/templates/actor/trophy-dark-sheet.html",
         width: 400,
-        height: 850,
+        height: 900,
         tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "skills" }]
         });
     }
@@ -83,8 +84,6 @@ export class TrophyDarkActorSheet extends ActorSheet {
 
             const el = $(ev.currentTarget);
             
-            console.log(el);
-            
             let newRuin = el.data('ruin');
 
             if(newRuin < this.actor.system.ritualCount + 1){
@@ -96,6 +95,28 @@ export class TrophyDarkActorSheet extends ActorSheet {
             updatedData.ruin = newRuin;
 
             this.actor.update({'data': updatedData});
+        });
+
+        html.find('.roll-ruin').click(async ev => {
+
+            const el = $(ev.currentTarget);                        
+            
+            let currentRuin = el.data('ruin');
+
+            let roll = new TrophyRuinRoll("1d6", {actor: this.actor});
+
+            await roll.evaluate({ async: true });
+
+            roll.toMessage();
+
+            if(roll.total > this.actor.system.ruin){
+                let updatedData = duplicate(this.actor.system);
+
+                updatedData.ruin += 1;
+
+                this.actor.update({'data': updatedData});
+            }
+
         });
 
         // Update Inventory Item

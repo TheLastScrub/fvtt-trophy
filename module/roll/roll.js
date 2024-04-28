@@ -1,24 +1,46 @@
-export class TrophyRoll extends Roll{
+export class TrophyRuinRoll extends Roll{
   
-  constructor(formula, data = {}, options = {}) {
-    super(formula, data, options);
+  constructor(formula, data = {}, options = {}) {    
+    super("1d6[dark]", data, options);
+    this.data = data;
+    this.options = options;
+    this.actor = data.actor;
+
+    //console.log(this.actor);
   }
 
-  async createMessage(content, flavor, rollMode) {
+  async toMessage(){
+
+    const rollMode = this.options.rollMode || game.settings.get("core", "rollMode");
+    const chatFlavor = null; //`${this.actor.name} Rolls Ruin, Current Ruin: ${this.actor.system.ruin}`;  
+    
+    let rollResult = '';
+
+    if(this.total > this.actor.system.ruin){
+      rollResult = `RUIN INCREASED TO ${this.actor.system.ruin + 1}`;
+    }
+    else{
+      rollResult = `RUIN DOES NOT INCREASE`;
+    }
+
+    const templateBackingData = {
+      total: this.total,
+      ruin: this.actor.system.ruin,
+      ruinRollResult: rollResult
+    }
+
+    const template = "systems/trophy/templates/roll/ruin-roll-chat-message.html";
+    const chatHtml = await renderTemplate(template, templateBackingData);
+
     const chatData = {
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      content,
-      flavor,
+      content: chatHtml,
+      flavor: chatFlavor,
       type: 5, // CHAT_MESSAGE_TYPES.ROLL,
       roll: this,
       rollMode,
     };
 
-    // play the dice rolling sound, like a regular in-chat roll
-    AudioHelper.play(
-      { src: "sounds/dice.wav", volume: 0.8, autoplay: true, loop: false },
-      true,
-    );
     return ChatMessage.create(chatData);
   }
 
@@ -40,7 +62,7 @@ export class TrophyRollDialog{
       ruin: this.actor.system.ruin
     };
 
-    const template = "systems/trophy/templates/dialog/roll-dialog.html";
+    const template = "systems/trophy/templates/roll/risk-roll-dialog.html";
     const content = await renderTemplate(template, backingData);
    
     return new Promise((resolve, reject) => {
