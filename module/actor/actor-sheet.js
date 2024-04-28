@@ -97,11 +97,7 @@ export class TrophyDarkActorSheet extends ActorSheet {
             this.actor.update({'data': updatedData});
         });
 
-        html.find('.roll-ruin').click(async ev => {
-
-            const el = $(ev.currentTarget);                        
-            
-            let currentRuin = el.data('ruin');
+        html.find('.roll-ruin').click(async ev => {            
 
             let roll = new TrophyRuinRoll("1d6", {actor: this.actor});
 
