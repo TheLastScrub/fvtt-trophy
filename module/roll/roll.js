@@ -5,19 +5,32 @@ export class TrophyRuinRoll extends Roll{
     this.data = data;
     this.options = options;
     this.actor = data.actor;
-
-    //console.log(this.actor);
   }
 
   async toMessage(){
 
     const rollMode = this.options.rollMode || game.settings.get("core", "rollMode");
     const chatFlavor = null; //`${this.actor.name} Rolls Ruin, Current Ruin: ${this.actor.system.ruin}`;  
-    
-    let rollResult = '';
 
+    let isBlind = false;
+    let isSynchronized = true;
+
+    if(rollMode === 'blindroll'){
+      isBlind = true;
+    }
+    else if(rollMode === 'gmroll'){
+      isSynchronized = false
+    }
+
+    let rollResult = '';
+    
     if(this.total > this.actor.system.ruin){
-      rollResult = `RUIN INCREASED TO ${this.actor.system.ruin + 1}`;
+      if(this.actor.system.ruin + 1 < 6){
+        rollResult = `RUIN INCREASED TO ${this.actor.system.ruin + 1}`;
+      }
+      else{
+        rollResult = `RUIN INCREASED TO 6, ${this.actor.name.toUpperCase()} IS LOST.}`;
+      }
     }
     else{
       rollResult = `RUIN DOES NOT INCREASE`;
@@ -40,6 +53,11 @@ export class TrophyRuinRoll extends Roll{
       roll: this,
       rollMode,
     };
+    
+    if(typeof game.dice3d !== 'undefined'){
+      //console.log(game.dice3d);
+      game.dice3d.showForRoll(this, game.user, isSynchronized, null, isBlind, null, chatData);
+    }
 
     return ChatMessage.create(chatData);
   }
@@ -80,7 +98,7 @@ export class TrophyRollDialog{
 
               let roll = new Roll(lightDie + "d6kh[light] + " + darkDie + "d6kh[dark]", this.actor.system);
               
-              await roll.evaluate({ async: true });                            
+              await roll.evaluate();                            
 
               let highestLightDie = roll.terms[0].total;
               let highestDarkDie = roll.terms[2].total;
@@ -95,5 +113,4 @@ export class TrophyRollDialog{
       }).render(true);
     });
   }
-
 }

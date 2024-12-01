@@ -8,7 +8,7 @@ import { TrophyRuinRoll } from "../roll/roll.js";
 export class TrophyDarkActorSheet extends ActorSheet {
     /** @override */
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
         classes: ["trophy", "sheet", "actor"],
         template: "systems/trophy/templates/actor/trophy-dark-sheet.html",
         width: 400,
@@ -61,6 +61,13 @@ export class TrophyDarkActorSheet extends ActorSheet {
             data.actor.system.hasMaxNumberOfRituals = false;
         }
 
+        if(data.actor.system.ruin === 5){
+            data.actor.system.canMakeReductionRoll = true;
+        }
+        else{
+            data.actor.system.canMakeReductionRoll = false;
+        }
+
         data.drive = await TextEditor.enrichHTML(this.object.system.drive, {async: true});
 
         console.log(data);
@@ -90,27 +97,28 @@ export class TrophyDarkActorSheet extends ActorSheet {
                 newRuin = this.actor.system.ritualCount + 1;
             }
             
-            let updatedData = duplicate(this.actor.system);
+            let updatedData = foundry.utils.duplicate(this.actor.system);
 
             updatedData.ruin = newRuin;
 
-            this.actor.update({'data': updatedData});
+            this.actor.update({'system': updatedData});
+
         });
 
         html.find('.roll-ruin').click(async ev => {            
 
             let roll = new TrophyRuinRoll("1d6", {actor: this.actor});
 
-            await roll.evaluate({ async: true });
+            await roll.evaluate();
 
-            roll.toMessage();
-
+            roll.toMessage('','');
+            //console.log('Total:' + roll.total);
             if(roll.total > this.actor.system.ruin){
-                let updatedData = duplicate(this.actor.system);
+                let updatedData = foundry.utils.mergeObject(this.actor.system);
 
                 updatedData.ruin += 1;
 
-                this.actor.update({'data': updatedData});
+                this.actor.update({'system': updatedData});
             }
 
         });
@@ -221,6 +229,10 @@ export class TrophyGoldActorSheet extends ActorSheet {
         {
             data.actor.system.ruin = 1;
         }
+        else if(data.actor.system.ruin > 6)
+        {
+            data.actor.system.ruin = 6;
+        }
 
         if(ritualCount >= data.actor.system.maxNumberOfRituals){
             data.actor.system.hasMaxNumberOfRituals = true;
@@ -247,6 +259,10 @@ export class TrophyGoldActorSheet extends ActorSheet {
         if (!this.options.editable) return;
 
         html.find('.item-create').click(this._onItemCreate.bind(this));
+        
+        html.find('.roll-reduction').click(ev => {
+            console.log("reduction roll");
+        });
 
         html.find('.ruin-die-sheet-icon').click(ev => {
 
@@ -254,9 +270,11 @@ export class TrophyGoldActorSheet extends ActorSheet {
             
             let newRuin = el.data('ruin');
 
-            let updatedData = duplicate(this.actor.system);
+            let updatedData = foundry.utils.duplicate(this.actor.system);
+
             updatedData.ruin = newRuin;
-            this.actor.update({'data': updatedData});
+            
+            this.actor.update({'system': updatedData});
         });
 
         // Update Inventory Item

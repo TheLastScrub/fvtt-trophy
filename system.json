@@ -13,8 +13,8 @@
   ],
   "version": "0.2.1",
   "compatibility": {
-    "minimum": "11",
-    "verified": "11"
+    "minimum": "12",
+    "verified": "12"
   },
   "manifest": "https://raw.githubusercontent.com/TheLastScrub/fvtt-trophy/main/system.json",
   "download": "https://github.com/TheLastScrub/fvtt-trophy/archive/refs/tags/v0.2.1.zip",

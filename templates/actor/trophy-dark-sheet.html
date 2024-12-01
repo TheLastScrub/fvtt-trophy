@@ -78,7 +78,11 @@
       <div class="">
 
         <!--<h3 class="header-text-label">RUIN</h3> -->
-        <h3 class="header-text-label">RUIN <i class="fa-solid fa-dice roll-ruin rollable" data-ruin="{{actor.system.ruin}}"></i></h3>
+        <h3 class="header-text-label">RUIN <i class="fa-solid fa-dice roll-ruin rollable" data-ruin="{{actor.system.ruin}}"></i>
+          {{#if actor.system.canMakeReductionRoll}}
+            (CAN MAKE REDUCTION ROLL <i class="fa-solid fa-dice roll-reduction rollable" style="color: #c0c0c0;" data-ruin="{{actor.system.ruin}}"></i>)
+          {{/if}}
+        </h3>
 
       </div>
       
